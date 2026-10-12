@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body { background-color: white; }
+
+.mianav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.mianav a {
+  float: left;
+  display: block;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+} 
+
+.mianav a:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Sugli schermi larghi meno di 992 pixel, il colore di background è giallo */
+@media screen and (max-width: 992px) {
+  body { background-color: yellow; }
+}
+
+/* Sugli schermi larghi meno di 600 pixel, il menu è verticale e occupa 
+   tutta la larghezza e il colore di background è rosa */
+@media screen and (max-width: 600px) {
+  .mianav a {
+    float: none;
+    width: 100%;
+  }
+  body { background-color: pink; }
+}
+</style>
+</head>
+<body>
+
+  <div class="mianav">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+
+  <p>La navigation bar e il colore di sfondo sono responsive</p>
+
+</body>
+</html>

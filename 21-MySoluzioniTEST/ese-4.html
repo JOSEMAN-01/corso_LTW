@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#searchButton").click(function(){
+                //No, qui sto cercando il valore del bottone
+                // var city=$(this).value.trim();
+                var city=$("#cerca").value.trim();
+                if(city!==""){
+                    $.ajax({
+                        url: "ese-3.php?city="+city,
+                        type: "GET",
+                        success: function(data){
+                            var cityInfo=JSON.parse(data);
+                            $("#showInfo").html=`
+                                <h2>Info su ${city['nome']}</h2>
+                                <p>Popolazione: ${city['popolazione']}</p>
+                                <p>Lingua parlata: ${city['lingua']}</p>
+                                <p>Stagione attuale: ${city['stagione']}</p>                           
+                            `;
+                        },
+                        error: function(responseTxt, statusTxt, xhr){
+                            console.error("Errore "+xhr.status+": "+xhr.statusText);
+                        }
+                    });
+                }
+                else{
+                    console.alert("Inserisci il nome di una citta");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" name="cerca" id="cerca" placeholder="Inserisci citta'...">
+    <button id="searchButton" onclick="cerca();">Cerca</button>
+    <div id="showInfo"></div>
+</body>
+</html>

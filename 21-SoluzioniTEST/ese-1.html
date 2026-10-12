@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione account biblioteca</title>
+    <script>
+        function validateForm() {
+            var x=document.myForm.data_nascita;
+            // La data di nascita deve essere successiva al 1900 e precedente al 2008
+            var dataNascita = document.getElementById("data-nascita").value;
+            var annoNascita = new Date(dataNascita).getFullYear();//Estraiamo l'anno dalla data
+            if (annoNascita < 1900 || annoNascita > 2008) {
+                alert("La data di nascita deve essere compresa tra il 1900 e il 2008.");
+                return false;
+            }
+
+            // Il numero di telefono non deve contenere lettere
+            var telefono = document.getElementById("telefono").value;
+            if (/[^\d -]/.test(telefono)) {
+                alert("Il numero di telefono può contenere solo numeri, spazi e trattini.");
+                return false;
+            }
+
+            // Almeno uno tra numero di telefono e indirizzo email non deve essere vuoto
+            var email = document.getElementById("email").value;
+            if (telefono.trim() === "" && email.trim() === "") {
+                alert("Inserire almeno un numero di telefono o un indirizzo email.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Registrazione account biblioteca</h2>
+    <form action="/register.php" method="post" onsubmit="return validateForm()" name="myForm">
+        <label for="nome-completo">Nome completo:</label>
+        <input type="text" id="nome-completo" name="nome_completo" maxlength="30" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="telefono">Numero di telefono:</label>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+
+        <label for="data-nascita">Data di nascita:</label>
+        <input type="date" id="data-nascita" name="data_nascita" required><br><br>
+
+        <label>Genere:</label>
+        <input type="radio" id="maschio" name="genere" value="maschio" required>
+        <label for="maschio">Maschio</label>
+        <input type="radio" id="femmina" name="genere" value="femmina" required>
+        <label for="femmina">Femmina</label>
+        <input type="radio" id="altro" name="genere" value="altro" required>
+        <label for="altro">Altro</label><br><br>
+
+        <label>Interessi:</label>
+        <input type="checkbox" id="romanzi" name="interessi" value="romanzi">
+        <label for="romanzi">Romanzi</label>
+        <input type="checkbox" id="saggistica" name="interessi" value="saggistica">
+        <label for="saggistica">Saggistica</label>
+        <input type="checkbox" id="fumetti" name="interessi" value="fumetti">
+        <label for="fumetti">Fumetti</label>
+        <input type="checkbox" id="altro-interesse" name="interessi" value="altro">
+        <label for="altro-interesse">Altro</label><br><br>
+
+        <label for="abbonamento">Tipo di abbonamento:</label>
+        <select id="abbonamento" name="abbonamento" required>
+            <option value="">Seleziona...</option>
+            <option value="mensile">Mensile</option>
+            <option value="annuale">Annuale</option>
+            <option value="premium">Premium</option>
+        </select><br><br>
+
+        <label for="foto-profilo">Foto del profilo:</label>
+        <input type="file" id="foto-profilo" name="foto_profilo"><br><br>
+
+        <label for="notifiche">Frequenza notifiche:</label>
+        <input type="range" id="notifiche" name="notifiche" min="0" max="10"><br><br>
+
+        <label for="note">Note aggiuntive:</label>
+        <textarea id="note" name="note" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Registrati">
+    </form>
+</body>
+</html>

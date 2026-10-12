@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esplora città</title>
+</head>
+<body>
+    <h1>Esplora città</h1>
+    <input type="text" id="citySearch" list="languages"
+           placeholder="Inserisci il nome di una città">
+    <datalist id="languages">
+        <option value="New York">
+        <option value="Londra">
+        <option value="Parigi">
+    </datalist>
+    <button id="searchBtn">Cerca</button>
+    <div id="cityInfo"></div>
+
+    <script>
+        document.getElementById("searchBtn").addEventListener("click", function() {
+            var cityName = document.getElementById("citySearch").value.trim();
+            if (cityName !== "") {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "ese-3-data.php?city=" + encodeURIComponent(cityName), true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        if (xhr.status === 200) {
+                            var cityInfo = JSON.parse(xhr.responseText);
+                            if (cityInfo.error) {
+                                alert(cityInfo["error"])
+                            }
+                            else {//notare l'uso del backtick
+                                document.getElementById("cityInfo").innerHTML = `
+                                    <h2>${cityInfo['name']}</h2>
+                                    <p>Nazione: ${cityInfo['country']}</p>
+                                    <p>Popolazione: ${cityInfo['population']}</p>
+                                    <p>Descrizione: ${cityInfo['description']}</p>`;
+                            }
+                        } else {
+                            alert("Errore nel recupero dei dati: " + xhr.statusText);
+                        }
+                    }
+                };
+                xhr.send();
+            } else {
+                alert("Inserisci il nome di una città.");
+            }
+        });
+    </script>
+</body>
+</html>

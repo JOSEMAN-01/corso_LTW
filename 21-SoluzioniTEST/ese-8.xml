@@ -1,0 +1,12 @@
+<?xml-stylesheet href="ese-8-style.xsl" type="text/xsl"?>
+<a>
+    <x>testo 1</x>
+    <b>
+      <c><w>testo 2</w></c>
+    </b>
+    <w>
+      <y>testo 3
+        <d><z>testo 4</z></d>
+      </y>
+    </w>
+</a>

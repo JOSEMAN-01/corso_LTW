@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 5</title>
+    <style>
+        .greenTheme{
+            color: brown;
+            background-color: green;
+            font-weight: bold;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <h2>Scegli il tema</h2>
+        <br>
+        <button onclick="changeToGreen();">Tema verde</button>
+        <button onclick="changeToDark();">Tema scuro</button>
+    </div>
+    <script>
+        //Non sono riuscito a cambiare lo stile del solo div box
+        function changeToGreen(){
+            document.body.className="greenTheme";
+        }
+    </script>
+
+</body>
+</html>

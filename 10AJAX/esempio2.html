@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Example</title>
+    <script>
+        function getData(e) {
+            // Crea un oggetto XMLHttpRequest
+            const xhr = new XMLHttpRequest();
+            
+            // Definisce la funzione di callback che verrà chiamata quando la richiesta verrà completata
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Se la richiesta ha successo, elabora i dati ricevuti
+                        const data = JSON.parse(xhr.responseText);
+                        for (const ricetta of data) {
+                            const divRicetta = document.createElement("div");
+                            const spanNome = document.createElement("span");
+                            const textIngredienti = document.createTextNode(
+                                //Usiamo il backtick per concatenare. u00A0 descrive un "non-breaking space"
+                                //Perché ricetta.ingredienti e non ricetta["ingredienti"]??
+                                //Perché JS non ha array associativi. Il parsing di JSON lo trasforma in un oggetto!
+                                `\u00A0(${ ricetta.ingredienti.join(', ') })`
+                            );
+                            spanNome.style.backgroundColor = "lightgrey";
+                            spanNome.innerText = ricetta.nome;
+                            //***************
+                            divRicetta.appendChild(spanNome);
+                            divRicetta.appendChild(textIngredienti);
+                            //**************
+                            document.getElementById("boxRicette")
+                                    .appendChild(divRicetta);
+                        }
+                    } else {
+                        // Se la richiesta ha fallito, mostra un messaggio di errore
+                        alert("Errore durante il recupero dei dati.");
+                    }
+                }
+            };
+            
+            // Prepara e invia la richiesta GET al file PHP remoto
+            const numRicette = document.getElementById("numRicette").value;
+            xhr.open("GET", `get_ricette.php?num=${numRicette}`, true);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <input id="numRicette" type="number" value="1">
+    <button onclick="getData(event)">Scarica ricette</button>
+    <div id="boxRicette"></div>
+</body>
+</html>

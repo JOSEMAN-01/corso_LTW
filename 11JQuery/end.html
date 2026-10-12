@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("div")//da non confondere con la sintassi PHP
+                .find("div")
+                    .find("div")
+                        .text("Sono nipote")
+                        .addClass("div-nipote")
+                        .end()
+                    //.text("Sono figlio") cancella tutto il contenuto dentro div ed inserisce quel testo
+                    .addClass("div-figlio")
+                    .end()
+                //.text("Sono padre")
+                .addClass("div-padre");
+        
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <div>
+            <div></div>
+            <div></div>
+        </div>
+        <div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+    <div>
+        <div>
+            <div></div>
+        </div>
+    </div>
+</body>
+</html>

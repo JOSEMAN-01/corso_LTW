@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="ese5.xsl" type="text/xsl" ?>
+<studenti>
+	<studente>
+		<nome>Maria</nome>
+		<voto>65</voto>
+	</studente>
+	<studente>
+		<nome>Giovanni</nome>
+		<voto>52</voto>
+	</studente>
+	<studente>
+		<nome>Laura</nome>
+		<voto>95</voto>
+	</studente>
+</studenti>

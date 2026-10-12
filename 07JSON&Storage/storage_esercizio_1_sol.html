@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function inizializzaStorageUtenti(){
+            if(typeof(localStorage.utenti)==="undefined"){//notare il '==='
+                localStorage.utenti="[]";
+            }
+        }
+
+        function resetStorageUtenti(){
+            localStorage.utenti="[]";
+        }
+
+        function stampaStorageSemplice(){
+            var u= JSON.parse(localStorage.utenti);
+            var l=u.length;
+            var s=new String("<h3>Stato di localStorage:</h3>");
+            for (let i = 0; i < l; i++) {
+                s+=JSON.stringify(u[i])+"<br/>";
+            }
+            document.getElementById("vistaStorage").innerHTML=s;
+            return true;
+        }
+
+        function inserisciUtente(){
+            var u=JSON.parse(localStorage.utenti);
+            var nextpos=u.length;
+            //i dati del nuovo utente da inserire
+            var o={
+                c:document.storage1.cognome.value,
+                n:document.storage1.nome.value,
+                m:document.storage1.matricola.value
+            };
+           
+            alert("Dati inseriti correttamente");
+            u[nextpos]=o;//lo posso fare perché u è stato trasformato in oggetto array precedentemente
+            localStorage.utenti=JSON.stringify(u);
+            return true;
+        }
+
+        window.addEventListener("load",()=>{inizializzaStorageUtenti();});
+
+    </script>
+</head>
+<body>
+    <form action="" name="storage1" class="storage1" onsubmit="return inserisciUtente();">
+        <div><label for="cognome">Cognome:</label></div>
+        <div><input type="text" name="cognome" id="cognome" size="40" maxlength="40"></div>
+        <div><label for="nome">Nome:</label></div>
+        <div><input type="text" name="nome" id="nome" size="30" maxlength="30"></div>
+        <div><label for="matricola">Matricola:</label></div>
+        <div><input type="text" name="matricola" id="matricola"></div>
+        <div><button type="submit">Invia</button></div>
+        <div><button type="reset">Reset</button></div>
+        <div><input type="button" value="Stampa" onclick="stampaStorageSemplice();"></div>
+        <div><input type="button" value="Reset Storage" onclick="resetStorageUtenti();"></div>
+    </form>
+    <hr>
+    <div id="vistaStorage"></div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--
+    The next code doesn't work (it doesn't find myDiv element) because we're using the script before the page has fully loaded
+    <script>
+        document.getElementById("myDiv").addEventListener("click",function(){alert("Mi hai cliccato!");});
+    </script>
+    -->
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById("myDiv").addEventListener("click",function(){alert("Mi hai cliccato!");})
+        }
+       </script>
+</head>
+<body>
+    <div id="myDiv">Ciao, cliccami!</div>
+</body>
+</html>

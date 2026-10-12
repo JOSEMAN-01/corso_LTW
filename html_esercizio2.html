@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="IT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Notare che è necessario definire "enctype" per poter caricare foto-->
+    <form action="" method="post" enctype="multipart/form-data">
+        Nome: <input type="text" name="nome" id="" required>
+        <br>
+        Data di nascita: <input type="date" name="dataNascita" id="">
+        <br>
+        CAP: <input type="text" name="caps" id="" size="5" pattern="[0-9]{5}">
+        <br>
+        Studente lavoratore<input type="checkbox" name="" id="">
+        <br>
+        Carica foto: <input type="file" name="foto" id="">
+        <br>
+        <!-- Il prof ha usato un semplice campo text con size 80 per la descrizione del lavoro-->
+        Descrizione lavoro svolto:
+        <br>
+        <textarea name="" id="" cols="30" rows="10" maxlength="80" placeholder="(Solo se NON studente lavoratore)" WRAP="physical"></textarea>
+
+        <br>
+        <input type="submit" value="Invia">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>

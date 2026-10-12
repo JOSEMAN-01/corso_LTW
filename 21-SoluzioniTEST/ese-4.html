@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esplora città</title>
+    <script src="https://unpkg.com/jquery"></script>
+</head>
+<body>
+    <h1>Esplora città</h1>
+    <input type="text" id="citySearch" list="languages"
+           placeholder="Inserisci il nome di una città">
+    <datalist id="languages">
+        <option value="New York">
+        <option value="Londra">
+        <option value="Parigi">
+    </datalist>
+    <button id="searchBtn">Cerca</button>
+    <div id="cityInfo"></div>
+
+    <script>
+        $("#searchBtn").click("", function() {
+            var cityName = $("#citySearch").val().trim();
+            if (cityName !== "") {
+                $.ajax({
+                    url: "ese-3-data.php?city=" + encodeURIComponent(cityName),
+                    type: "GET",
+                    success: function(data) {//Il nostro responseText si trova su data
+                        console.log(data);
+                        var cityInfo = JSON.parse(data);
+                        $("#cityInfo").html(`
+                            <h2>${cityInfo['name']}</h2>
+                            <p>Nazione: ${cityInfo['country']}</p>
+                            <p>Popolazione: ${cityInfo['population']}</p>
+                            <p>Descrizione: ${cityInfo['description']}</p>
+                        `);
+                    },
+                    error: function() {
+                        console.error("Errore nel recupero dei dati: " + xhr.statusText);//Da dove viene questo xhr??
+                    }
+                })
+            } else {
+                alert("Inserisci il nome di una città.");
+            }
+        });
+    </script>
+</body>
+</html>

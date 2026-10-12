@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post" name="registrazione">
+        <label for="cognome">Cognome:</label>
+        <input type="text" name="cognome" id="cognome" maxlength="40" size="40" required>
+        <br>
+        <label for="matricola">Matricola:</label>
+        <input type="number" name="matricola" id="matricola" size="7" min="0" max="1234567">
+        <br>
+        Residenza:
+        <select name="regione-residenza" id="regione-residenza" required>
+            <option value=""></option>
+            <option value="lazio">Lazio</option>
+            <option value="toscana">Toscana</option>
+            <option value="emiliaromagna">Emilia-Romagna</option>
+        </select>
+        <br>
+        E-mail:
+        <input type="email" name="mail" id="mail" maxlength="30">
+        <br>
+        <!--Il prof ha usato un type:number per il campo telefono-->
+        Telefono:
+        <input type="tel" name="telefono" id="telefono" maxlength="16">
+        <!---->
+        <br>
+        Status studente:
+        <input type="text" list="stato-studente"> 
+        <datalist id="stato-studente">
+            <option value="in corso">In corso</option>
+            <option value="fuori corso">Fuori corso</option>
+            <option value="ripetente">Ripetente</option>
+        </datalist>
+        <br>
+        <!--Potevo usare anche WRAP="physical" per andare a capo in automatico-->
+        Richieste speciali:
+        <br>
+        <textarea name="" id="" cols="60" rows="12"></textarea>
+        <br>
+        <input type="submit" value="Invia">
+        <input type="reset" value="Reset">
+    </form>
+</body>
+</html>

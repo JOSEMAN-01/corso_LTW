@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form1{
+            display:grid;
+            grid-template: '. .'/1fr 6fr;
+        }
+    </style>
+    <script type="text/javascript">
+        function validateForm(){
+            //controlla che cognome non sia vuoto
+            if(document.form1.cognome.value==""){//fa riferimento alla FORM con NAME form1
+                alert("Campo \"Cognome\" non può essere vuoto");
+                return false;
+            }
+            //Controlla che la matricola sia un numero
+            //La soluzione del prof era più semplice: isNaN(document.form1.matricola.value)
+            const reg = new RegExp('^[0-9]+$');
+            if(reg.test(document.form1.matricola.value)==false){
+                alert("Campo \"Matricola\" non è un numero");
+                return false;
+            }
+            //Controlla che sia stata scelta una regione di residenza
+            if(document.form1.regioneResidenza.value==""){
+                alert("Campo \"Regione di Residenza\" non può essere vuoto");
+                return false;
+            }
+            //Controlla che il campo  telefono e mail non risultino entrambi vuoti
+            if(document.form1.tel.value=="" && document.form1.email.value==""){
+                alert("Compilare campo \"Telefono\" oppure campo \"Email\"");
+                return false;
+            }
+        
+            alert("tutto a posto");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    
+    <form action="" name="form1" class="form1" onsubmit="return validateForm();">
+        <div><label for="cognome">Cognome:</label></div>
+        <div><input type="text" name="cognome" id="cognome" size="40" maxlength="40"></div>
+        <div><label for="matricola">Matricola:</label></div>
+        <div><input type="text" name="matricola" id="matricola" size="40" maxlength="12" required></div>
+        <div><label for="regioneResidenza">Regione di residenza</label></div>
+        <div>
+            <select name="regioneResidenza" id="regioneResidenza">
+                <option value="" selected disabled hidden>Scegli regione...</option><!--Trucco SELECT-->
+                <option value="lazio">Lazio</option>
+                <option value="toscana">Toscana</option>
+                <option value="sicilia">Sicilia</option>
+            </select>
+        
+        </div>
+        <div><label for="email">Email:</label></div>
+        <div><input type="email" name="email" id="email" size="40" maxlength="30"></div>
+        <div><label for="telefono">Telefono:</label></div>
+        <div><input type="tel" name="tel" id="tel" size="40" maxlength="15"></div>
+        <button type="submit">Invia</button>
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .form2{
+            display:grid;
+            grid-template: '. .'/1fr 6fr;
+        }
+    </style>
+    <script type="text/javascript">
+        const reg = new RegExp('^[0-9]{5}$');
+        function checkCognome(){
+            if(/\d/.test(document.form2.cognome.value)){ //regex
+                document.getElementById("cognomeWarning").innerHTML="Non può contenere numeri";
+            }
+            else document.getElementById("cognomeWarning").innerHTML="";
+        }
+        function checkCAP() {
+            var cap=document.form2.cap.value;
+            if(!reg.test(cap)){
+                document.getElementById("capWarning").innerHTML="Deve essere un numero di 5 cifre";
+            }
+            else document.getElementById("capWarning").innerHTML="";
+        }
+
+        function validaForm2() {
+            //Trucco JS radio checked
+            if(document.querySelector('input[name="sesso"]:checked')==null){//restituisci tutti gli elementi di tipo input che hanno valore "sesso" per il loro attributo name e che siano stati selezionati
+                alert("Scegliere il sesso");
+                return false;
+            }
+            if(document.form2.ateneo.value==""){
+                alert("Scegliere un ateneo");
+                return false;
+            }
+
+            //Se l'utente è studente lavoratore non può lasciare vuoto il campo "Descrizione lavoro"
+            if(document.form2.studLavoratore.checked && document.form2.descLavoro.value==""){
+                alert("Descrivere il lavoro svolto");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+    <form action="" class="form2" name="form2" onsubmit="return validaForm2();">
+        <div><label for="cognome">Cognome:</label></div>
+        <div>
+            <input type="text" name="cognome" id="cognome" size="50" maxlength="50" onkeydown="checkCognome();">
+            <div id="cognomeWarning"></div>
+        </div>
+        <div><label for="sesso">Sesso:</label></div>
+        <div>
+            <input type="radio" name="sesso" id="m" value="m">M
+            <input type="radio" name="sesso" id="f" value="f">F
+        </div>
+        <div><label for="ateneo">Ateneo:</label></div>
+        <div>
+            <select name="ateneo" id="ateneo">
+                <option value="" hidden selected disabled>Scegli ateneo</option>
+                <option value="Roma1">Roma1</option>
+                <option value="Roma2">Roma2</option>
+                <option value="Roma3">Roma3</option>
+            </select>
+        </div>
+        <div><label for="cap">CAP:</label></div>
+        <div>
+            <input type="text" name="cap" id="cap" size="5" maxlength="5" onkeydown="checkCAP();">
+            <div id="capWarning"></div>
+        </div>
+        <div><input type="checkbox" name="studLavoratore" id="studLavoratore"></div>
+        <div><label for="studLavoratore">Studente lavoratore</label></div>
+        <div><label for="descLavoro">Descrizione sul lavoro:</label></div>
+        <div><textarea name="descLavoro" id="descLavoro" rows="4" cols="20"></textarea></div>
+        <div><button type="submit">Invia</button></div>
+    </form>
+    
+</body>
+</html>

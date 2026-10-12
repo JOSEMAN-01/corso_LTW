@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="./signin.css">
+    <title>Login Page</title>
+</head>
+<body class="text-center">
+    <!-- Per qualche motivo dobbiamo aggiungere la classe 'm-auto' per centrare la pagina-->
+    <form action="login.php" method="post" class="form-signin m-auto" onsubmit="valida()">
+        <!-- mb sta per margin bottom-->
+        <h1 class="mb-4">Loggati!</h1>
+        <!---->
+        <input type="email" name="email" id="" placeholder="Inserisci la tua email" class="form-control" required autofocus>
+        <input type="password" name="password" id="" placeholder="Inserisci la tua password" class="form-control" required>
+        <div id="divRemember" class="checkbox mb-2">
+            <input type="checkbox" name="rmb" id="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">Invia!</button> 
+    </form>
+    
+</body>
+</html>

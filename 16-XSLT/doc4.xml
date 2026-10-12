@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="ese4.xsl" type="text/xsl" ?>
+<root>
+  <b>
+    <a>testo1</a>
+    <c>
+      <a/>
+      testo2
+      <d>
+        <a>testo3</a>
+      </d>
+    </c>
+    testo4
+    <a/>
+  </b>
+</root>

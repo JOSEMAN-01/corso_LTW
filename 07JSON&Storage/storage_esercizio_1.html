@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .storage1{
+            display:grid;
+            grid-template: '. .'/1fr 6fr;
+        }
+    </style>
+    <script>
+        if(typeof(localStorage.userId)==="undefined")localStorage.userId="0";//senza questo if NON funziona correttamente
+        function save(){
+            var userId=localStorage.userId;//è una stringa
+            var elements = document.storage1.elements;
+            for (var i = 0; i<elements.length;i++) {
+                if(elements[i].type="input"){
+                    var x=elements[i].name+userId;//concatenazione stringhe
+                    localStorage[x]=elements[i].value;
+                }
+            }
+            var x=parseInt(userId);
+            x=x+1;
+            x=x.toString();
+            localStorage.userId=x;
+        }
+
+        function stampa(){
+            var userId=localStorage.userId;//è una stringa
+            userId=parseInt(userId);
+            var elements = document.storage1.elements;
+            var s="";
+            for(var i=0;i<userId;i++){
+                for(var j=0;j<elements.length;j++){
+                    if(elements[j].type="input"){
+                        var x=elements[j].name+i.toString();//nome1,cognome1,matricola1,nome2,cognome2,...
+                        s+=localStorage[x]+ " ";
+                    }
+                }
+            
+            }
+            document.getElementById("zonaStampa").innerHTML=s;
+        }
+
+    </script>
+</head>
+<body>
+    <form action="" name="storage1" class="storage1" onsubmit="save();">
+        <div><label for="cognome">Cognome:</label></div>
+        <div><input type="text" name="cognome" id="cognome" size="40" maxlength="40"></div>
+        <div><label for="nome">Nome:</label></div>
+        <div><input type="text" name="nome" id="nome" size="30" maxlength="30"></div>
+        <div><label for="matricola">Matricola:</label></div>
+        <div><input type="text" name="matricola" id="matricola"></div>
+        <div><button type="submit">Invia</button></div>
+        <div><button type="reset">Reset</button></div>
+        <div><button onclick="return stampa();">Stampa</button></div>
+        <div><button onclick="reset();">Reset Storage</button></div>
+        <input type="button" value="Stampa" onclick="stampa();">
+        <div id="zonaStampa"></div>
+    </form>
+</body>
+</html>

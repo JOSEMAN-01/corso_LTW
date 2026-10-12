@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <script>
+        function valida(){
+            var myForm=document.myForm;
+
+            var dataDiNascita=myForm.dataDiNascita.value; //reference by name
+            var annoDiNascita= new Date(dataDiNascita).getFullYear;
+            if(annoDiNascita<1900||annoDiNascita>2008){
+                alert("La vostra data di nascita non e' valida");
+                return false;
+            }
+
+            var telefono=myForm.telefono.value;
+            //Come usare i REGEX in JS?
+            if(/[^d -]/){
+                alert("Il numero di telefono puo' contenere solo numeri, spazi o trattini");
+                return false;
+            }
+            //E' suggerito usare trim() e l'uguglianza tripla ===
+            if(myForm.email.value==""&&myForm.telefono.value==""){
+                alert("Devi inserire almeno uno tra email e telefono");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+    <form action="" method="post" name="myForm" enctype="multipart/form-data" onsubmit="valida();">
+        Nome: <input type="text" name="nome" id="nome" maxlength="30" required><br>
+        Email: <input type="email" name="email" id="email"><br>
+        Password: <input type="password" name="password" id="password"><br>
+        Numero di telefono: <input type="tel" name="telefono" id="telefono"><br>
+        Data di Nascita: <input type="date" name="dataDiNascita" id="dataDiNascita" required><br>
+        Genere: M<input type="radio" name="genere" id="genereMaschio" required> F<input type="radio" name="genere" id="genereFemmina" required><br>
+        Interessi: <input type="checkbox" name="interessi" id="interesseRomanzi">Romanzi <input type="checkbox" name="interessi" id="interesseSaggistica"> Altro<input type="checkbox" name="interessi" id="altriInteressi"><br>
+        Tipo di abbonamento: 
+        <select name="abbonamento" id="abbonamento" required>
+            <option value="" selected>Scegli...</option>
+            <option value="mensile" >Mensile</option>
+            <option value="annuale">Annuale</option>
+            <option value="Premium">Premium</option>
+        </select>
+        <br>
+        Foto profilo: <input type="file" name="foto" id="foto"><br>
+        Frequenza notifiche: <input type="range" name="frequenzaNotifiche" id="frequenzaNotifiche" min="0" max="10"><br>
+        Note aggiuntive: <br><textarea name="note" id="note"></textarea><br>
+
+        <input type="submit" value="Invia">
+        <input type="reset" value="Reset">
+    </form>
+
+</body>
+</html>

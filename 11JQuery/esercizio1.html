@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $(".c1").click(function(){$(this).css("background-color","blue")});
+            $(".c1").dblclick(function(){$(this).hide()});//in realtà potevo unirlo alla prima riga ".click().dblclick()"
+            $("span.c2").click(function(){$(".c1").hide()});
+        });
+    </script>
+</head>
+<body>
+    <div class="c1">classe c1</div>
+        <span class="c2">span c2</span>
+    <div class="c1">clase c1</div>
+    <div class="c1">classe c1</div>
+    <span class="c2">span c2</span>
+    <span class="c2">span c2</span>
+
+    
+</body>
+</html>

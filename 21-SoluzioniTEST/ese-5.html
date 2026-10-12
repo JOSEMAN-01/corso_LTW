@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sito con temi multipli</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 1.2s;
+            background-attachment: fixed;
+        }
+
+        .theme-default {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .theme-dark {
+            background-color: #333;
+            color: lightyellow;
+        }
+
+        .theme-glitter {
+            background-image: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: #fff;
+        }
+    </style>
+    <script>
+        function changeTheme(e) {
+            document.body.className = e.target.value;
+        }
+        window.onload = () => {
+            for (b of document.getElementById("theme-buttons").children) {
+                b.addEventListener("click", changeTheme);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Sito con temi multipli</h1>
+    <div id="theme-buttons">
+        <button value="theme-default">Tema predefinito</button>
+        <button value="theme-dark">Tema scuro</button>
+        <button value="theme-glitter">Tema glitter</button>
+    </div>
+    <p>Questo è un esempio di testo.</p>
+</body>
+</html>

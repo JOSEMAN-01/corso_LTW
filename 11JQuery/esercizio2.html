@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            //1) premendo bottone 1 il contenuto testuale di tutti gli h1 sparisce
+            $("button:nth-child(1)").click(function(){$("h1").text("");});
+            //2) premendo bottone 2
+            $("button:nth-child(2)").click(function(){$("div:first").css("color","red");});
+            //3)
+            //$("button:nth-child(3)").mouseenter(function(){$("div:nth-child(2)").text("abc");}); Non funziona div:nth-child(2)
+            $("button:nth-child(3)").mouseenter(function(){$("#div2").text("abc");});
+        });
+        
+    </script>
+</head>
+<body>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+    <h1>primo h1</h1>
+    <h1>secondo h1</h1>
+    <h1>terzo h1</h1>
+    <div>div 1</div>
+    <div id="div2">div 2</div>
+</body>
+</html>

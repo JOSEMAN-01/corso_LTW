@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 1</title>
+    <script>
+        function initStorage(){
+            if(document.myForm.datiUtente!=="undefined"){
+                var datiUtente=JSON.parse(localStorage.datiUtente);
+                document.myForm.nome.value=datiUtente.nome;
+                document.getElementById(datiUtente.genere).checked=true;
+
+                for (let i = 0; i < datiUtente.interessi.length; i++) {
+                    document.getElementById(datiUtente.interessi[i]).checked=true;
+                }
+                
+            }
+        }
+
+        function salvaDati(){
+            var myForm=document.myForm;
+            
+            var nome=myForm.nome.value;
+            var genere= document.querySelector('input[name="genere"]:checked').value;
+            var interessi=document.querySelectorAll('input[name="interessi"]:checked');
+            var interessiSelezionati=[];
+
+            for (let i = 0; i < interessi.length; i++) {
+                interessiSelezionati.push(interessi[i].value);
+            }
+
+            var datiUtente={
+                "nome": nome,
+                "genere": genere,
+                "interessi": interessiSelezionati
+            }
+
+            //Questo modo qui sotto non è valido
+            //localStorage.datiUtente[datiUtente.length]=datiUtente;
+
+            //E' preferibile salvarlo come JSON
+            //localStorage.setItem("datiUtente",datiUtente)
+            localStorage.setItem("datiUtente",JSON.stringify(datiUtente));
+        }
+
+        function valida(){
+            salvaDati();
+            return true;
+        }
+        
+        window.addEventListener("load",initStorage);
+    </script>
+
+</head>
+<body>
+    <form action="" method="post" name="myForm" enctype="multipart/form-data" onsubmit="valida();">
+        Nome: <input type="text" name="nome" id="nome" maxlength="30" required><br>
+        Email: <input type="email" name="email" id="email"><br>
+        Password: <input type="password" name="password" id="password"><br>
+        Numero di telefono: <input type="tel" name="telefono" id="telefono"><br>
+        Data di Nascita: <input type="date" name="dataDiNascita" id="dataDiNascita" required><br>
+        Genere: M<input type="radio" name="genere" id="genereMaschio" required> F<input type="radio" name="genere" id="genereFemmina" required><br>
+        Interessi: <input type="checkbox" name="interessi" id="interesseRomanzi">Romanzi <input type="checkbox" name="interessi" id="interesseSaggistica"> Altro<input type="checkbox" name="interessi" id="altriInteressi"><br>
+        Tipo di abbonamento: 
+        <select name="abbonamento" id="abbonamento" required>
+            <option value="" selected>Scegli...</option>
+            <option value="mensile" >Mensile</option>
+            <option value="annuale">Annuale</option>
+            <option value="Premium">Premium</option>
+        </select>
+        <br>
+        Foto profilo: <input type="file" name="foto" id="foto"><br>
+        Frequenza notifiche: <input type="range" name="frequenzaNotifiche" id="frequenzaNotifiche" min="0" max="10"><br>
+        Note aggiuntive: <br><textarea name="note" id="note"></textarea><br>
+
+        <input type="submit" value="Invia">
+        <input type="reset" value="Reset">
+    </form>
+
+</body>
+</html>

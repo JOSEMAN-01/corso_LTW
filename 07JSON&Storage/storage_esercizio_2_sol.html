@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function cambiaColore(e){
+            if (e.target.style.color=="red"){
+                e.target.style.color="initial";
+            }
+            else{
+                e.target.style.color="red";
+            }
+        }
+
+        function nascondi (e){
+            e.target.style.visibility="hidden";
+        }
+
+        function coloraVerde(e){
+            e.target.style.color="green";
+        }
+
+        function coloraBlu(e){
+            e.target.style.color="blue";
+        }
+
+        function ripristinaColore(e){
+            e.target.style.color="initial";
+        }
+
+        function assegnaEventHandlers(){
+            for(let n of document.getElementsByTagName("div")){
+                n.addEventListener("mouseenter", cambiaColore);
+            }
+
+            for(let n of document.getElementsByClassName("c1")){
+                n.addEventListener("click", coloraBlu);
+                n.addEventListener("dblclick", nascondi);
+            }
+
+            for(let n of document.querySelectorAll("span.c2")){
+                n.addEventListener("mouseenter",coloraVerde);
+                n.addEventListener("mouseleave", ripristinaColore);
+            }
+
+        }
+
+        window.addEventListener("load", ()=>{assegnaEventHandlers();});
+    </script>
+</head>
+<body>
+    <div>Div 1</div>
+    <div>Div 2</div>
+    <div>Div 3</div>
+    <span class="c1">Primo span classe 1</span><br>
+    <span class="c2">Primo span classe 2</span><br>
+    <span class="c1">Secondo span classe 1</span><br>
+    <span class="c2">Secondo span classe 2</span><br>
+    <span class="c1">Terzo span classe 1</span><br>
+    <span class="c2">Terzo span classe 2</span><br>
+    <div class="c1">Questo è un div di classe 1</div><br>
+    <div class="c2">Questo è un div di classe 2</div>
+
+</body>
+</html>

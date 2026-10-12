@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione account biblioteca</title>
+    <script>
+        function precompilaFormLocalStorage() {
+            if (localStorage.getItem("datiUtente")) {
+                // Recupera i datiUtente dalla localStorage
+                var datiUtente = JSON.parse(localStorage.getItem("datiUtente"));
+
+                // Precompila il form con i datiUtente
+                document.getElementById("nome-completo").value = datiUtente.nomeCompleto;
+                document.getElementById("email").value = datiUtente.email;
+                document.getElementById("password").value = datiUtente.password;
+                document.getElementById("telefono").value = datiUtente.telefono;
+                document.getElementById("data-nascita").value = datiUtente.dataNascita;
+                document.getElementById(datiUtente.genere).checked = true;
+                datiUtente.interessi.forEach(function(interesse) {
+                    document.getElementById(interesse).checked = true;
+                });
+                document.getElementById("abbonamento").value = datiUtente.abbonamento;
+                document.getElementById("foto-profilo").value = datiUtente.fotoProfilo;
+                document.getElementById("notifiche").value = datiUtente.preferenzaNotifiche;
+                document.getElementById("note").value = datiUtente.noteAggiuntive;
+            }
+        }
+        window.addEventListener("load", precompilaFormLocalStorage)
+
+		function salvaDatiLocalStorage() {
+            // Ottieni i valori dei campi del form
+            var nomeCompleto = document.getElementById("nome-completo").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var telefono = document.getElementById("telefono").value;
+            var dataNascita = document.getElementById("data-nascita").value;
+            var genere = document.querySelector('input[name="genere"]:checked').value;
+            var interessi = document.querySelectorAll('input[name="interessi"]:checked');
+            var interessiSelezionati = [];
+            for (var i = 0; i < interessi.length; i++) {
+                interessiSelezionati.push(interessi[i].value);
+            }
+            var abbonamento = document.getElementById("abbonamento").value;
+            var fotoProfilo = document.getElementById("foto-profilo").value;
+            var preferenzaNotifiche = document.getElementById("notifiche").value;
+            var noteAggiuntive = document.getElementById("note").value;
+
+            // Creazione dell'oggetto datiUtente
+            var datiUtente = {
+                "nomeCompleto": nomeCompleto,
+                "email": email,
+                "password": password,
+                "telefono": telefono,
+                "dataNascita": dataNascita,
+                "genere": genere,
+                "interessi": interessiSelezionati,
+                "abbonamento": abbonamento,
+                "fotoProfilo": fotoProfilo,
+                "preferenzaNotifiche": preferenzaNotifiche,
+                "noteAggiuntive": noteAggiuntive
+            };
+
+            // Salva i dati utente nella localStorage
+            localStorage.setItem("datiUtente", JSON.stringify(datiUtente));
+		}
+		
+        function validateForm() {
+            // La data di nascita deve essere successiva al 1900 e precedente al 2008
+            var dataNascita = document.getElementById("data-nascita").value;
+            var annoNascita = new Date(dataNascita).getFullYear();
+            if (annoNascita < 1900 || annoNascita > 2008) {
+                alert("La data di nascita deve essere compresa tra il 1900 e il 2008.");
+                return false;
+            }
+
+            // Il numero di telefono non deve contenere lettere
+            var telefono = document.getElementById("telefono").value;
+            if (/[^\d -]/.test(telefono)) {
+                alert("Il numero di telefono può contenere solo numeri, spazi e trattini.");
+                return false;
+            }
+
+            // Almeno uno tra numero di telefono e indirizzo email non deve essere vuoto
+            var email = document.getElementById("email").value;
+            if (telefono.trim() === "" && email.trim() === "") {
+                alert("Inserire almeno un numero di telefono o un indirizzo email.");
+                return false;
+            }
+            
+			salvaDatiLocalStorage()
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h2>Registrazione account biblioteca</h2>
+    <form action="/register.php" method="post" onsubmit="return validateForm()">
+        <label for="nome-completo">Nome completo:</label>
+        <input type="text" id="nome-completo" name="nome_completo" maxlength="30" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="telefono">Numero di telefono:</label>
+        <input type="tel" id="telefono" name="telefono"><br><br>
+
+        <label for="data-nascita">Data di nascita:</label>
+        <input type="date" id="data-nascita" name="data_nascita" required><br><br>
+
+        <label>Genere:</label>
+        <input type="radio" id="maschio" name="genere" value="maschio">
+        <label for="maschio">Maschio</label>
+        <input type="radio" id="femmina" name="genere" value="femmina">
+        <label for="femmina">Femmina</label>
+        <input type="radio" id="altro" name="genere" value="altro">
+        <label for="altro">Altro</label><br><br>
+
+        <label>Interessi:</label>
+        <input type="checkbox" id="romanzi" name="interessi" value="romanzi">
+        <label for="romanzi">Romanzi</label>
+        <input type="checkbox" id="saggistica" name="interessi" value="saggistica">
+        <label for="saggistica">Saggistica</label>
+        <input type="checkbox" id="fumetti" name="interessi" value="fumetti">
+        <label for="fumetti">Fumetti</label>
+        
+        <input type="checkbox" id="altro-interesse" name="interessi" value="altro">
+        <label for="altro-interesse">Altro</label><br><br>
+
+        <label for="abbonamento">Tipo di abbonamento:</label>
+        <select id="abbonamento" name="abbonamento" required>
+            <option value="">Seleziona...</option>
+            <option value="mensile">Mensile</option>
+            <option value="annuale">Annuale</option>
+            <option value="premium">Premium</option>
+        </select><br><br>
+
+        <label for="foto-profilo">Foto del profilo:</label>
+        <input type="file" id="foto-profilo" name="foto_profilo"><br><br>
+
+        <label for="notifiche">Frequenza notifiche:</label>
+        <input type="range" id="notifiche" name="notifiche" min="0" max="10"><br><br>
+
+        <label for="note">Note aggiuntive:</label>
+        <textarea id="note" name="note" rows="4" cols="50"></textarea><br><br>
+
+        <input type="submit" value="Registrati">
+    </form>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validaIscrizione(){
+            if(document.iscrizione.nome.value==""){
+                alert("Per favore, inserire il vostro nome");
+                return false; //Interrompiamo l'invio del modulo
+            }
+            return true;
+        }
+
+    </script>
+</head>
+<body>
+    <!--Correzione: L'esercizio parlava di suggerimenti, ma in realtà si riferiva a valori di default-->
+    <form action="" method="post" name="iscrizione" onsubmit="return validaIscrizione();">
+        <table>
+            <tr>
+                <td><label for="nome">Nome:</label></td>
+                <td><input type="text" name="nome" id="nome"></td>
+            </tr>
+            <tr>
+                <td><label for="eta">Eta':</label></td>
+                <!--Qui il prof aveva messo l'attributo "value" a 18-->
+                <td><input type="text" name="eta" id="eta" value="18"></td>
+            </tr>
+            <tr>
+                <td>Sesso:</td>
+                <td>
+                    <input type="radio" name="sesso" id="maschio">
+                    <label for="maschio">Maschio</label>
+                    <input type="radio" name="sesso" id="femmina">
+                    <label for="femmina">Femmina</label>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="servizio">Scegli servizio:</label></td>
+                <td>
+                    <select name="servizio" id="servizio">
+                        <option value="servizio1" selected>Servizio 1</option>
+                        <option value="servizio2">Servizio 2</option>
+                        <option value="servizio3">Servizio 3</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" name="infocomm" id="infocomm"></td>
+                <!--Nella soluzione la casella era già spuntata-->
+                <td><label for="infocomm">Autorizzo l'invio di informazioni commerciali</label></td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit">Invia</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

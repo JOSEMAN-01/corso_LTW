@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Prova</title>
+    <meta charset="utf-8"/>
+    <!-- 
+     NOTA: rispetto all'esempio precedente, il foglio esterno 
+     è linkato prima del foglio interno (tag <style>).
+     Questo fa sì che la dichiarazione con selettore div nel tag <style>
+     abbia la precedenza sulla dichiarazione con selettore div nel foglio 
+     esterno (a differenza dell'esempio precedente).
+    -->
+    <link rel="stylesheet" href="stile1.css"/>
+    <style>
+      .c2 {color:blue}
+      div {color:yellow}
+    </style>
+  </head>
+  <body>
+    <h1>Parte di testo h1</h1>
+    <p>Primo paragrafo</p>
+    <p>Secondo paragrafo</p>
+    <ul>
+        <li>Primo elemento lista</li>
+        <li>Secondo elemento lista</li>
+    </ul>
+    <div class="c1">Parte di testo div di classe c1</div>
+    <div class="c2">Parte di testo div di classe c2</div>
+    <div class="c1 c2">Parte di testo div sia di classe c1 che di classe c2</div>
+    <div>Parte di testo div senza classi associate</div>
+  </body>
+</html>

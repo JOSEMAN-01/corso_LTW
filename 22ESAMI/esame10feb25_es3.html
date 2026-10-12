@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio 3</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+
+        #inner{
+            border-style: solid;
+            border-color: blue;
+            height: 40px;
+            width: 40px;
+        }
+
+        #outer{
+            border-style: solid;
+            border-color: red;
+            height: 100px;
+            width: 100px;
+            background-color: none;
+        }
+
+        #outer:hover{
+            background-color: red;
+        }
+        
+    </style>
+</head>
+<body>
+    <div id="outer">
+        div1
+        <div id="inner">div2</div>
+        <!--
+        La seguente riga è la soluzione punto 1 metodo JS
+        <div id="inner" onmouseenter="changeBackground();" onmouseleave="changeBackgroundToOriginal();">div2</div>
+        -->
+    </div>
+    <script>
+        function changeBackground(){
+            document.getElementById("outer").style.background="red";
+        }
+        function changeBackgroundToOriginal(){
+            document.getElementById("outer").style.background="none";
+        }
+        //Soluzione punto 2 A
+        function removeThisNode(){
+            document.getElementById("inner").remove();
+        }
+        //Soluzione punto 2 B
+        $(document).ready(function(){
+            $("#inner").click(function(){
+                $(this).remove();
+            });
+        });
+    </script>
+</body>
+</html>

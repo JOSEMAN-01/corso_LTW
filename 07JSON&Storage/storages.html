@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <h3>Controlla il log del sito</h3>
+    <script>
+        localStorage.nome="Ronald";
+        localStorage.cognome="McDonald";
+
+        var o={p1: 5, p2: "Big Mac"};
+
+        localStorage.oggetto=JSON.stringify(o);
+
+        console.log(localStorage.nome+ " "+localStorage["cognome"]);
+
+        var x= JSON.parse(localStorage.oggetto);
+
+        console.log(x);
+    </script>
+</body>
+</html>

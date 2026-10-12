@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head><title>AJAX: semplice esempio</title></head>
+  <body>
+    <div>
+      <button>Risorsa_1</button>
+      <button>Risorsa_2</button>
+      <button>Risorsa_3</button> 
+      <button>Risorsa_4</button>
+    </div>
+    <hr/>
+    <div id="zonaDinamica">
+      Seleziona con i bottoni la risorsa da visualizzare qui
+    </div>
+    <hr/>
+    Resto del documento<br/>
+    ...
+    <script>
+      var bottoni = document.getElementsByTagName("button");
+      for (var i = 0; i < bottoni.length; i++) {
+        bottoni[i].onclick = caricaRisorsa;
+      }
+
+      function caricaRisorsa(e) {
+        var httpRequest = new XMLHttpRequest(); //Questo oggetto NON è nel DOM, ma può comunque gestire eventi!
+        httpRequest.onreadystatechange = gestisciResponse; //Quando questa funzione verrà chiamata, il contenuto della risposta verrà effettivamente inserito nella nostra pagina
+        httpRequest.open("GET", e.target.innerHTML+".txt", true);
+        httpRequest.send();
+      }
+
+      /* si noti l’uso della proprietà target degli eventi,
+      che restituisce l’elemento che ha causato l’evento */
+     function gestisciResponse(e) {
+       if (e.target.readyState == 4 && e.target.status == 200) {
+         document.getElementById("zonaDinamica").innerHTML
+         = e.target.responseText;    //e.target.responseText si riferisce al testo che abbiamo scaricato dalla nostra risorsa
+       }
+     }
+   </script>
+  </body>
+</html>

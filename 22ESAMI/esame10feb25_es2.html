@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            function checkAvailability(){
+                var sport=document.formPrenotaCampo.sport.value;
+                var date=document.formPrenotaCampo.dataOraPrenotazione.value;
+                var minutes=document.formPrenotaCampo.tempo.value;
+                
+                var response=$.ajax({
+                    url: "checkavailability.php",
+                    type: "GET",
+                    data: {
+                        sport: sport,
+                        date: date,
+                        minutes: minutes
+                    },
+                    statusCode: {
+                        404: ()=>alert("Page not found"),
+                        503: ()=>alert("Service unavailable")
+                    }
+                }).responseText();
+                
+
+                if(response==="ok"){//il file php ha verificato che effettivamente c'è disponibilità
+                    alert("Prenotazione effettuata correttamente");
+                }
+
+                else if(response==="notavailable"){
+                    alert("Non c'è un campo disponibile per quei parametri");
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+    <form name="formPrenotaCampo" action="" method="post" onsubmit="return validaForm();">
+        Nome:
+        <input type="text" name="nome" id="nome" size="50" maxlength="50" placeholder="Mario Rossi"><br>
+        Numero di giocatori:
+        <input type="number" name="numGiocatori" id="numGiocatori" min="1" onkeyup="stopAutocomplete()"><br>
+        Email:
+        <input type="email" name="email" id="email"><br>
+        Telefono:
+        <input type="tel" name="telefono" id="telefono"><br>
+        Contatto preferito:
+        <input type="radio" name="sceltaContatto" id="sceltaContatto1" value="telefono">telefono
+        <input type="radio" name="sceltaContatto" id="sceltaContatto2" value="email">email
+        <br>
+        Data e ora:
+        <input type="datetime-local" name="dataOraPrenotazione" id="dataOraPrenotazione"><br>
+        Sport:
+        <select name="sport" id="sport" onchange="popolaCampi();">    
+            <option value="calcio" selected>Calcio</option>
+            <option value="tennis">Tennis</option>
+        </select>
+        <br>
+        Tempo (in minuti):
+        <input type="number" name="tempo" id="tempo" onkeyup="popolaCampi();" min="1"><br>
+        Prezo (euro/ora):
+        <input type="number" name="prezzoCampo" id="prezzoCampo" ><br>
+        Prezzo per Giocatore (euro/ora)
+        <input type="number" name="prezzoGiocatore" id="prezzoGiocatore" readonly><br>
+        <input type="checkbox" name="includeDivise" id="includeDivise">
+        Includere divise/casacche?
+        <br>
+        <input type="submit" value="Prenota">
+        <input type="button" value="Reset" onclick="customReset();">
+        <!--Bottone verifica disponibilita-->
+        <input type="button" onclick="checkAvailability();">
+
+    </form>
+</body>
+</html>

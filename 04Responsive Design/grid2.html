@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display:grid;
+            grid-template:
+                'a a a' 120px
+                'b . .' 80px /*I puntini vanno riempiti coi div che sono rimasti*/
+                'b c c' 110px/50px 1fr 1fr;
+                /*Lo slash è per specificare le proporzioni delle colonne. In questo caso 50 px per la prima colonna e lo spazio rimasto verrà diviso ugualmente in 2 parti*/
+            border: solid 1px;
+            text-align: center;
+        }
+
+        .grid > div {
+            border: solid 1px;
+            padding: 2em 1em;
+        }
+
+        .c3 {grid-area:a;}
+        .c4 {grid-area:b;}
+        .c5 {grid-area:c;}
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div>1</div>
+        <div>2</div>
+        <div class="c3">3</div>
+        <div class="c4">4</div>
+        <div class="c5">5</div>
+    </div>
+    
+</body>
+</html>

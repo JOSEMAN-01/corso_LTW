@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateForm(){
+            var x=document.my_form.nome_completo.value;
+            alert(x);
+        }
+    </script>
+</head>
+<body>
+    <h2>Registrazione account biblioteca</h2>
+    <form action="" method="post" onsubmit="validateForm()" name="my_form">
+        <label for="nome-completo">Nome completo:</label>
+        <input type="text" id="nome-completo" name="nome_completo" maxlength="30" required><br><br>
+        <input type="submit" value="Invia">
+    </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio3</title>
+    <script>
+    
+        function cerca(){
+            var xhr=new XMLHttpRequest(); //conviene che sia const
+            //Non va bene perché onreadystatechange è una proprietà, non una funzione
+            // xhr.onreadystatechange(gestisciResponse());
+            xhr.onreadystatechange=function(){
+                if(xhr.status==="200"&&xhr.readyState==="4"){//oppure xhr.readyState.DONE
+                    var response=xhr.responseText;//Immagino che il file php mi restituisce un oggetto JSON
+                    response=JSON.parse(response);
+                    //Troppo complicato, bastava accedere alla proprietà innerHTML del div showInfo
+                    var s=`Informazioni su ${response.nome}\n`;
+                    s+=`Popolazione: ${response.popolazione}\n`;
+                    s+=`Lingua parlata: ${response.lingua}\n`;
+                    s+=`Stagione attuale: ${response.stagione}\n`;
+                    document.getElementById("showInfo").value=s;
+                    document.getElementById("showInfo").value=s;
+                }
+            }
+            var citta=document.getElementById("cerca").value;
+            xhr.open("GET",`ese-3.php?citta=${citta}`,true);
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <input type="text" name="cerca" id="cerca" placeholder="Inserisci citta'...">
+    <button onclick="cerca();">Cerca</button>
+    <div id="showInfo"></div>
+</body>
+</html>

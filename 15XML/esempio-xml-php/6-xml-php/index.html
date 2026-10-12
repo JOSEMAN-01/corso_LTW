@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>I miei prodotti</title>
+    <script>
+    function loadProducts() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var xmlDoc = xhr.responseXML;
+                var products = xmlDoc.getElementsByTagName('product');//Sto navigando il documento XML restituito
+                var productList = document.getElementById('product-list');//Sto navigando questo documento HTML
+
+                for (var i = 0; i < products.length; i++) {
+                    var product = products[i];
+                    var productName = product.getElementsByTagName('name')[0].textContent;//getElementsByTagName restituisce un array con un solo elemento (in questo caso)
+                    var productPrice = product.getElementsByTagName('price')[0].textContent;
+
+                    var li = document.createElement('li');
+                    li.textContent = productName + ' - $' + productPrice;
+
+                    productList.appendChild(li);
+                }
+            }
+        };
+
+        xhr.open('GET', 'get_prodotti.php', true);
+        xhr.send();
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProducts);//Come onload ma scatta prima
+    </script>
+</head>
+<body>
+    <h1>I miei prodotti</h1>
+    <ul id="product-list"></ul>
+</body>
+</html>

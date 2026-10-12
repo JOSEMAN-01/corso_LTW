@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet href="es1.xsl" type="text/xsl" ?><!--Importiamo il file XSL-->
+<bibliografia>
+  <voce>
+    <nomeAutore>Anna Bianchi</nomeAutore>
+    <nomeAutore>Mario Rossi</nomeAutore>
+    <titolo>Libro 1</titolo>
+    <tipoPub>libro</tipoPub>
+    <anno>2019</anno>
+  </voce>
+  <voce>
+    <nomeAutore>Paolo Verdi</nomeAutore>
+    <titolo>Articolo 1</titolo>
+    <tipoPub>articolo</tipoPub>
+    <anno>2020</anno>
+  </voce>
+  <voce>
+    <nomeAutore>Maria Neri</nomeAutore>
+    <nomeAutore>Carlo Gialli</nomeAutore>
+    <titolo>Libro 2</titolo>
+    <tipoPub>libro</tipoPub>
+    <anno>2018</anno>
+  </voce>
+  <voce>
+    <nomeAutore>Laura Rossi</nomeAutore>
+    <nomeAutore>Giorgio Verdi</nomeAutore>
+    <nomeAutore>Paola Bianchi</nomeAutore>
+    <titolo>Articolo 2</titolo>
+    <tipoPub>articolo</tipoPub>
+    <anno>2017</anno>
+  </voce>
+</bibliografia>

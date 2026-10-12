@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="stile.xsl"?><!--Importiamo un XSL esterno-->
+<bibliografia>
+  <libro>
+    <titolo>Guida galattica per gli autostoppisti</titolo>
+    <autore>Douglas Adams</autore>
+    <editore>Urania</editore>
+    <anno>1980</anno>
+  </libro>
+  <libro>
+    <titolo>Ristorante al termine dell'Universo</titolo>
+    <autore>Douglas Adams</autore>
+    <editore>Urania</editore>
+    <anno>1984</anno>
+  </libro>
+  <libro>
+    <titolo>Cent'anni di solitudine</titolo>
+    <autore>Gabriel García Márquez</autore>
+    <editore>Sudamericana</editore>
+    <anno>1967</anno>
+  </libro>
+  <libro>
+    <titolo>Divina Commedia</titolo>
+    <autore>Dante Alighieri</autore>
+    <editore>N/A</editore>
+    <anno>1321</anno>
+  </libro>
+</bibliografia>

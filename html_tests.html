@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests HTML</title>
+    <style>
+        .myDiv{
+            background-color: yellow;
+            text-align: center;
+        }
+
+        thead {color:green; border: 1px solid black;}
+        tbody {color:blue;}
+        tfoot{color:red;}
+
+        table,th,td {border: 1px solid black;}
+       
+    </style>
+</head>
+<body>
+    <PRE>
+        begin
+        if
+        then
+        end;
+        I<SUB>5</SUB> = 2<SUP>4</SUP>
+    </PRE>
+    <ul>
+        <p>hola</p>
+        <p>mundo</p>
+        world
+        hello
+    </ul>
+
+    <ul>
+        <li>pisa</li>
+        <li>roma</li>
+        <li>firenze</li>
+    </ul>
+
+    <ol>
+        <li>lunedì</li>
+        <li>martedì</li>
+    </ol>
+    <hr>
+    <br>
+    <p>Queste sono liste annidate</p>
+    <ol>
+        <li> 
+            Gruppo A
+            <ul>
+                <li>Marco</li>
+                <li>Franco</li>
+                <li>Mauro</li>
+            </ul>
+        </li>
+        <li>
+            Gruppo B
+            <ul>
+                <li>Noelia</li>
+                <li>Ian</li>
+            </ul>
+        </li>
+    </ol>
+    <br>
+    <hr>
+    <a href="https://www.google.com/" >Vai su google</a>
+    <br>
+    <a href="https://www.bing.com" target="_BLANK" title="Aprira' nuova scheda" >Vai su Bing (BLANK)</a>
+    <br>
+    <a href="https://www.bing.com" target="_top" title="Rimani in scheda" >Vai su Bing (TOP)</a>
+    <br>
+    <a href="https://www.bing.com" target="_parent" title="Visualizza nel frame genitore" >Vai su Bing (PARENT)</a>
+    <hr>
+
+    <div class="myDiv">
+        <p>Here is Crumb</p>
+        <a href="https://www.crumbtheband.com/" target="_blank" title="Greatest NYC band"><img src="crumb.jpg" width="400" height="400" alt="Foto locale di Crumb"></a>
+        <p>Here is Crumb, again</p>
+        <img src="https://en.wikipedia.org/wiki/Crumb_%28band%29#/media/File:Crumb_Pic_2018.jpg" width="200" height="200" alt="Foto Wikipedia di Crumb" >
+    </div>
+    <hr>
+    <br>
+    <h1>"Hey, can you see?"</h1>
+    <br>
+    <h3>BNR</h3>
+    <p><i>Ice Melt</i> - ALBUM FROM CRUMB </p>
+    <br>
+    <u>"Can you believe?"</u>
+    <hr>
+    <h2>Logical tags</h2>
+    <ul>
+        <li>
+            Address tag
+            <p> <address>Via Tiburtina</address></p>    
+        </li>
+        <li>
+            <u>Quote tag e Cite tag</u>
+            <p>
+            <q>The color of my face it changes by day...</q>
+            <cite>Lila Ramani</cite>
+            </p>
+        </li>
+        <li>
+            STRONG tag
+            <p>Running away is <strong>EASY</strong>, it's the living that's hard</p>
+        </li>
+    </ul>
+    <hr>
+    <a href="#begin">Torna alla frase "begin"</a>
+    <hr>
+    <h2>My table Test</h2>
+    <br>
+    <table border="5" cellpadding="20">
+        <caption>Elenco degli impiegati:</caption>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>et&agrave;</th>
+        </tr>       
+        <tr>
+            <td>Mario</td>
+            <td>Rossi</td>
+            <td>24</td>
+        </tr>
+        <tr>
+            <TD>Paola</TD>
+            <TD>Bianchi</TD>
+            <TD>32</TD>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <hr>
+    <h2>THEAD TBODY TFOOT</h2>
+    <br>
+    <table border="10">
+        <thead>
+            <tr>
+                <th>Month</th>
+                <th>Savings</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>January</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>February</td>
+                <td>$200</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Sum</td>
+                <td>$300</td>
+            </tr>
+        </tfoot>
+    </table>
+    <hr>
+    <h3>COLGROUP</h3>
+    <br>
+    <table>
+        <colgroup>
+            <col span="2" style="background-color: red;">
+            <col style="background-color: green;">
+        </colgroup>
+        <tr>
+            <th>ISBN</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Sold Units</th>
+        </tr>
+        <tr>
+            <td>345213</td>
+            <td>Dune</td>
+            <td>$12</td>
+            <td>39</td>
+        </tr>
+        <tr>
+            <td>198090</td>
+            <td>Titans: Apolo</td>
+            <td>$5</td>
+            <td>28</td>
+        </tr>
+
+    </table>
+    <hr>
+    <h3>COLSPAN ROWSPAN</h3>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Cognome</th>
+            <th>Et&agrave;</th>
+        </tr>
+        <tr>
+            <td colspan="2">Rossi</td>
+            <td>32</td>
+        </tr>
+        <tr>
+            <td>Paola</td>
+            <td rowspan="2">Bianchi</td>
+            <td>51</td>
+        </tr>
+        <tr>
+            <td>Otis</td>
+            <td>22</td>
+        </tr>
+    </table>
+    <hr>
+    <h3>FORM</h3>
+    <form method="post" action="" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td align="right">Nome: </td>
+                <td>
+                    <input type="text" name="nome" maxlength="20" size="50" autofocus="true" required="true">
+                    <!-- hidden inputs -->
+                    <input type="hidden" name=MAILFORM_SUBJECT value="titolo del form">
+                    <input type="hidden" name=MAILFORM_URL value="conferma_invio_form.html">
+                </td>
+                
+            </tr>
+            <tr>
+                <td align="right">
+                    <label for="cap">CAP</label>
+                </td>
+                <td>
+                    <input type="text" name="" id="cap" maxlength="5" size="5" pattern="[0-9]{5}">
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Presentazione:</td>
+                <td><textarea name="presentazione" id="" cols="50" rows="10" wrap="physical" placeholder="Io sono..."></textarea></td>
+            </tr>
+            <tr>
+                <td align="right">Regione di residenza:</td>
+                <td>
+                    <select name="regione-residenza">
+                        <option value="lazio">Lazio</option>
+                        <option value="toscana" selected>Toscana</option>
+                        <option value="lombardia">Lombardia</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td align="right">Foto (formato pdf):</td>
+                <td><input type="file" name="foto" id="" accept="application/pdf"></td>
+            </tr>
+            <tr>
+                <td align="right">Laurea:</td>
+                <td>
+                    <input type="text" name="laurea" list="listalauree" size="20">
+                    <datalist id="listalauree">
+                        <option value="Chimica"></option>
+                        <option value="Informatica"></option>
+                        <option value="Matematica"></option>
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <fieldset>
+                        <legend>Referenze</legend>
+                        <input type="text" name="referenza1" id="" size="50" autocomplete="true">
+                        <br>
+                        <input type="text" name="referenza2" id="" size="50" autocomplete="true">
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                
+                <td colspan="2"><input type="checkbox" name="" id="automunito" size="3" value="NO" CHECKED>Automunito</td>
+            </tr>
+            
+        </table>
+        <p>
+            <input type="reset" value="Reset">
+            <input type="submit" value="Submit">
+        </p>    
+        <p>
+            <input type="image" src="mailman_submit_form.jpg" src="mailman_submit_form.jpg" width="30" height="40">
+        </p>
+    </form>
+</html>

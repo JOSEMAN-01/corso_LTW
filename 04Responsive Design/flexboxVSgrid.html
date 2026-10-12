@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Differenza tra Grid e Flexbox</title>
+    <!--La differenza più importante tra Grid e Flexbox: Di default, con le grid il contenuto si adatta al contenitore e, viceversa, con le flexbox `e il contenitore ad adattarsi al contenuto.-->
+    <style>
+        .grid{
+            display:grid;
+            grid-template-columns: repeat(3,1fr);
+        }
+
+        .grid>.cell:nth-child(1){background-color: red;}
+        .grid>.cell:nth-child(2){background-color: green;}
+        .grid>.cell:nth-child(3){background-color: blue;}
+
+        .flexbox{
+            display:flex;
+        }
+
+        .flexbox>.cell{
+            flex-grow:1;
+        }
+
+        .flexbox>.cell:nth-child(1){background-color: red;}
+        .flexbox>.cell:nth-child(2){background-color: green;}
+        .flexbox>.cell:nth-child(3){background-color: blue;}
+    </style>
+</head>
+<body>
+    <div class ="grid">
+        <div class ="cell">Contenuto grande , da confrontare con gli altri due </div>
+        <div class ="cell">2</div>
+        <div class ="cell">3</div>
+    </div>
+    <div class ="flexbox">
+        <div class ="cell">Contenuto grande , da confrontare con gli altri due </div>
+        <div class ="cell">2</div>
+        <div class ="cell">3</div>
+    </div>
+</body>
+</html>

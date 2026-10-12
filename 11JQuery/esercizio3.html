@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+                $("#zona"+this.id).load("testo"+this.id+".txt",function(responseTxt,statusTxt,xhr){
+                    if(statusTxt=="error")alert("Errore nel caricamento")
+                });
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <button id="1">Bottone 1</button>
+    <button id="2">Bottone 2</button>
+
+    <div id="zona1">div1</div>
+    <div id="zona2"></div>
+</body>
+</html>

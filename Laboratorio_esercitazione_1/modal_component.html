@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.css">
+    <!-- Per far funzionare questo componente occorre importare libreria js-->
+     <script src="./bootstrap/js/bootstrap.bundle.js"></script>
+    <title>Modal component</title>
+</head>
+<body>
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Lorus Iris Ipsum</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-danger" data-bs-dismiss="modal">Chiudi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 'data-' è un attributo personalizzabile dall'utente o framework (ad es. Bootstrap). In questo caso lo usiamo per collegare questo bottone sotto alla finestra modale sopra-->
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Apri la finestra modale</button>
+
+</body>
+</html>
